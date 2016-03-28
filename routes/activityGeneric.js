@@ -10,6 +10,8 @@ exports.edit = function(req, res) {
 };
 
 exports.save = function(req, res) {
+    console.log(req.headers);
+    console.log(req.body);
     activityUtils.logData(req);
     res.send(200, 'Save');
 };
