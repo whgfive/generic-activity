@@ -3,6 +3,8 @@ var https = require('https');
 var activityUtils = require('./activityUtils');
 
 exports.edit = function(req, res) {
+    console.log(req.headers);
+    console.log(req.body);
     activityUtils.logData(req);
     res.send(200, 'Edit');
 };
