@@ -38,7 +38,7 @@ app.post('/ixn/activities/generic/save/', jwtAuth, activityGeneric.save);
 app.post('/ixn/activities/generic/validate/', jwtAuth, activityGeneric.validate);
 app.post('/ixn/activities/generic/publish/', jwtAuth, activityGeneric.publish);
 app.post('/ixn/activities/generic/execute/', jwtAuth, activityGeneric.execute);
-app.get('/getActivityData', function(req, res) {
+app.post('/getActivityData', function(req, res) {
     res.sendfile(path.join(__dirname+'/public/ws-viewer.html'));
     //res.send( 200, {data: activityUtils.logExecuteData} );
     /*if( !activityUtils.logExecuteData.length) {

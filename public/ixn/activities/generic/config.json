@@ -23,7 +23,7 @@
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": false,
+            "useJwt": true,
             "customerKey": "your-encryption-customer-key-here",
             "timeout": 10000
         }
@@ -35,21 +35,21 @@
         	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/save/",
             "body": "",
             "verb": "POST",
-            "useJwt": false,
+            "useJwt": true,
             "customerKey": "your-encryption-customer-key-here"
         },
         "publish": {
         	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/publish/",
             "verb": "POST",
             "body": "",
-            "useJwt": false,
+            "useJwt": true,
             "customerKey": "your-encryption-customer-key-here"
         },
         "validate": {
         	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/validate/",
             "verb": "POST",
             "body": "",
-            "useJwt": false,
+            "useJwt": true,
             "customerKey": "your-encryption-customer-key-here"          
         }
     },
