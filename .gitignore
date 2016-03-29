@@ -1,0 +1,6 @@
+*.ds_store
+node_modules
+*.swp
+*.swo
+*.log
+/config/*

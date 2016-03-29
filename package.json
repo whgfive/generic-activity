@@ -5,10 +5,6 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "William Garrison",
-  "contributors": [
-    "William Garrison <wgarrison@salesforce.com>"
-  ],
   "dependencies": {
     "body-parser": "1.15.0",
     "express": "~3.5.0",
