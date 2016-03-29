@@ -23,8 +23,8 @@
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": "{{jwtUse}}",
-            "customerKey": "{{jwtExternalKey}}",
+            "useJwt": false,
+            "customerKey": "",
             "timeout": 10000
         }
     },
@@ -35,22 +35,22 @@
         	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/save/",
             "body": "",
             "verb": "POST",
-            "useJwt": "{{jwtUse}}",
-            "customerKey": "{{jwtExternalKey}}"
+            "useJwt": false,
+            "customerKey": ""
         },
         "publish": {
         	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/publish/",
             "verb": "POST",
             "body": "",
-            "useJwt": "{{jwtUse}}",
-            "customerKey": "{{jwtExternalKey}}"
+            "useJwt": false,
+            "customerKey": ""
         },
         "validate": {
         	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/validate/",
             "verb": "POST",
             "body": "",
-            "useJwt": "{{jwtUse}}",
-            "customerKey": "{{jwtExternalKey}}"          
+            "useJwt": false,
+            "customerKey": ""          
         }
     },
     "edit": {
