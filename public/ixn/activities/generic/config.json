@@ -8,8 +8,8 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Generic Activity",
-            "description": "Activity for 3rd party service."
+            "name": "{{activityName}}",
+            "description": "{{activityDescription}}"
         }
     },
     "arguments": {
@@ -18,43 +18,43 @@
 			],        	
             "outArguments": [				
 			],
-			"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/execute/",
+			"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/execute/",
             "verb": "POST",
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": true,
-            "customerKey": "your-encryption-customer-key-here",
+            "useJwt": "{{jwtUse}}",
+            "customerKey": "{{jwtExternalKey}}",
             "timeout": 10000
         }
     },
     "configurationArguments": {
-    	"applicationExtensionKey": "wg-jb-generic",
+    	"applicationExtensionKey": "{{appcenterKey}}",
         "defaults": { },     
         "save": {
-        	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/save/",
+        	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/save/",
             "body": "",
             "verb": "POST",
-            "useJwt": true,
-            "customerKey": "your-encryption-customer-key-here"
+            "useJwt": "{{jwtUse}}",
+            "customerKey": "{{jwtExternalKey}}"
         },
         "publish": {
-        	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/publish/",
+        	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/publish/",
             "verb": "POST",
             "body": "",
-            "useJwt": true,
-            "customerKey": "your-encryption-customer-key-here"
+            "useJwt": "{{jwtUse}}",
+            "customerKey": "{{jwtExternalKey}}"
         },
         "validate": {
-        	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/validate/",
+        	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/validate/",
             "verb": "POST",
             "body": "",
-            "useJwt": true,
-            "customerKey": "your-encryption-customer-key-here"          
+            "useJwt": "{{jwtUse}}",
+            "customerKey": "{{jwtExternalKey}}"          
         }
     },
     "edit": {
-    	"url": "https://generic-activity.herokuapp.com/ixn/activities/generic/",
+    	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/",
         "height": 400,
         "width": 500
     }

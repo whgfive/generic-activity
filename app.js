@@ -10,6 +10,7 @@ var activityGeneric = require('./routes/activityGeneric');
 var activityUtils = require('./routes/activityUtils');
 var pkgjson = require('./package.json');
 var app = express();
+var configjson  = require('./public/ixn/activities/generic/config.json');
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +39,36 @@ app.post('/ixn/activities/generic/save/', jwtAuth, activityGeneric.save);
 app.post('/ixn/activities/generic/validate/', jwtAuth, activityGeneric.validate);
 app.post('/ixn/activities/generic/publish/', jwtAuth, activityGeneric.publish);
 app.post('/ixn/activities/generic/execute/', jwtAuth, activityGeneric.execute);
+app.get( '/ixn/activities/generic/config.json', function( req, res ) {
+    var appName = 'activityAppName';
+    var actKey = 'appcenterKey';
+    var actName = 'activityName';
+    var actDesc = 'activityDescription';
+    var jwtUse = 'jwtUse';
+    var jwtExternalKey = 'jwtExternalKey';
+    var search = new RegExp('{{'+appName+'}}', 'g');
+    var json = JSON.parse(JSON.stringify(configjson));
+    json.arguments.execute.url = configjson.arguments.execute.url.replace(search,process.env[appName]);
+    json.arguments.execute.useJwt = process.env.jwtUse;
+    json.arguments.execute.customerKey = process.env.jwtExternalKey;
+    json.configurationArguments.save.url = configjson.configurationArguments.save.url.replace(search,process.env[appName]);
+    json.configurationArguments.save.useJwt = process.env.jwtUse;
+    json.configurationArguments.save.customerKey = process.env.jwtExternalKey;
+    json.configurationArguments.publish.url = configjson.configurationArguments.publish.url.replace(search,process.env[appName]);
+    json.configurationArguments.publish.useJwt = process.env.jwtUse;
+    json.configurationArguments.publish.customerKey = process.env.jwtExternalKey;
+    json.configurationArguments.validate.url = configjson.configurationArguments.validate.url.replace(search,process.env[appName]);
+    json.configurationArguments.validate.useJwt = process.env.jwtUse;
+    json.configurationArguments.validate.customerKey = process.env.jwtExternalKey;
+    json.edit.url = configjson.edit.url.replace(search,process.env[appName]);
+    search = new RegExp('{{'+actKey+'}}', 'g');
+    json.configurationArguments.applicationExtensionKey = configjson.configurationArguments.applicationExtensionKey.replace(search,process.env[actKey]);
+    search = new RegExp('{{'+actName+'}}', 'g');
+    json.lang['en-US'].name = configjson.lang['en-US'].name.replace(search,process.env[actName]);   
+    search = new RegExp('{{'+actDesc+'}}', 'g');
+    json.lang['en-US'].description = configjson.lang['en-US'].description.replace(search,process.env[actDesc]); 
+    res.status(200).send( json );
+});
 app.post('/getActivityData', function(req, res) {
     res.sendfile(path.join(__dirname+'/public/ws-viewer.html'));
     //res.send( 200, {data: activityUtils.logExecuteData} );
@@ -55,4 +86,7 @@ app.get('/version', function(req, res) {
     res.send(200, JSON.stringify({
         version: pkgjson.version
     }));
+});
+app.get('/dave',function(req,res){
+    res.render("index");
 });
