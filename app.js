@@ -68,7 +68,7 @@ app.get( '/ixn/activities/generic/config.json', function( req, res ) {
     res.status(200).send( json );
 });
 app.post('/getActivityData', function(req, res) {
-    res.sendfile('ws-viewer.html');
+    res.sendfile(path.join(__dirname,'/views/ws-viewer.html'));
     //res.send( 200, {data: activityUtils.logExecuteData} );
     /*if( !activityUtils.logExecuteData.length) {
         res.send( 200, {data: null} );
