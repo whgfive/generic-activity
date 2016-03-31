@@ -1,16 +1,36 @@
 {
   "name": "SE Custom Actvity",
-  "description": "Create a generic Journey Builder Custom Activity.",
+  "description": "Create a generic Journey Builder Custom Activity for use within your demos. Simply update the environment variables below to edit what appears within Journey Builder as well as provide your appropriate keys.",
   "repository": "https://github.com/whgfive/generic-activity",
   "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
   "logo": "http://image.s4.exct.net/lib/fe9615737463047a73/m/4/21230f62-8d05-43f6-b7ca-fe66edd72c94.png",
   "env": {
-  	"jwtUse":{},
-    "jwtTokenSecret":{},
-    "jwtExternalKey":{},
-  	"appcenterKey":{},
-    "activityAppName":{},
-  	"activityName":{},
-  	"activityDescription":{}
+  	"jwtUse":{
+      "description":"TRUE/FALSE value for whether or not to create a JWT token.",
+      "required":false
+      },
+    "jwtTokenSecret":{
+      "description":"This would be the value of the secret value used to validate the token. This is the value before adding as a salted key within the Marketing Cloud. Example: Hello world",
+      "required":false
+      },
+    "jwtExternalKey":{
+      "description":"The external key of the salted key configured within Email Studio.",
+      "required":false
+      },
+  	"appcenterKey":{
+      "description":"Key of the activity created within App Center."
+      },
+    "activityAppName":{
+      "description":"Sub-domain of your Heroku app. Maybe be updated after creation.",
+      "value":"generic-activity"
+      },
+  	"activityName":{
+      "description":"Name of the activity to appear within Journey Builder.",
+      "value":"Generic Activity"
+      },
+  	"activityDescription":{
+      "description":"Description of the activity to appear within Journey Builder.",
+      "value":"Performs generic API calls."
+    }
   }
 }
