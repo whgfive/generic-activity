@@ -44,8 +44,6 @@ app.get( '/ixn/activities/generic/config.json', function( req, res ) {
     var actKey = 'appcenterKey';
     var actName = 'activityName';
     var actDesc = 'activityDescription';
-    var jwtUse = 'jwtUse';
-    var jwtExternalKey = 'jwtExternalKey';
     var search = new RegExp('{{'+appName+'}}', 'g');
     var json = JSON.parse(JSON.stringify(configjson));
     json.arguments.execute.url = configjson.arguments.execute.url.replace(search,process.env[appName]);

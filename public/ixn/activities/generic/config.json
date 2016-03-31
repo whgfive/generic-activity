@@ -2,8 +2,8 @@
     "workflowApiVersion": "1.0",
     "metaData": {
         "version": "2.0",
-        "icon": "images/jb-icon.jpg",
-        "iconSmall": "images/jb-icon.jpg"
+        "icon": "images/feed-icon.jpg",
+        "iconSmall": "images/feed-icon.jpg"
     },
     "type": "REST",
     "lang": {
@@ -16,7 +16,7 @@
         "execute": {     	
 			"inArguments":[
 			],        	
-            "outArguments": [				
+            "outArguments": [		
 			],
 			"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/execute/",
             "verb": "POST",
@@ -55,7 +55,7 @@
     },
     "edit": {
     	"url": "https://{{activityAppName}}.herokuapp.com/ixn/activities/generic/",
-        "height": 400,
-        "width": 500
+        "height": 700,
+        "width": 900
     }
 }

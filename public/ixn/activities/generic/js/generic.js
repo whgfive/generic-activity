@@ -26,12 +26,17 @@ define( function( require ) {
 					oArgs[key] = aArgs[i][key]; 
 				}
 			}
+            message = oArgs.message || toJbPayload['configurationArguments'].defaults.message;
         }
         
 		$.get( "/version", function( data ) {
 			$('#version').html('Version: ' + data.version);
 		});                
-	
+	    
+        if (!message) {
+            connection.trigger('updateButton', { button: 'next', enabled: false });
+        }
+
 		gotoStep(step);
         
     });
@@ -66,8 +71,24 @@ define( function( require ) {
 
     function onRender() {
         connection.trigger('ready');
+
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
+
+        $('#feedMessage').change(function() {
+            myFunc();
+            var message = getMessage();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+        });
+        
+         $('#feedMessage').keyup(function() {
+            myFunc();
+        });
+
+        function myFunc() {
+            var input = $("#feedMessage").val();
+            $("#texter").html(input);
+        }
 
     };
 
@@ -76,17 +97,29 @@ define( function( require ) {
         switch(step) {
             case 1:
                 $('#step1').show();
+                connection.trigger('updateButton', { button: 'next', text: 'next', enabled: Boolean(getMessage()) });
                 connection.trigger('updateButton', { button: 'back', visible: false });
-                connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
             case 2:
+                $('#step2').show();
+                $('#showMessage').html(getMessage());
+                connection.trigger('updateButton', { button: 'back', visible: true });
+                connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
+                break;
+            case 3:
                 save();
                 break;
         }
     };
 
-    function save() {		
-		toJbPayload.metaData.isConfigured = true;
+    function getMessage() {
+        return $('#feedMessage').val();
+    };
+
+    function save() {
+        var value = getMessage();
+        toJbPayload['arguments'].execute.inArguments.push({"feedMessage": value});
+        toJbPayload.metaData.isConfigured = true;
         connection.trigger('updateActivity', toJbPayload);
     }; 
     	 
