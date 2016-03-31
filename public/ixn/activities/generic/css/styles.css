@@ -3,6 +3,23 @@ body {
     padding: 0px;
 }
 
-#container {
+.container {
     margin: 30px;
+}
+
+.textpanel {
+    position: relative;
+    display: inline-block;
+}
+
+.textpanel span {
+    position: absolute;
+    top: 141px;
+    left: 30px;
+    height: 170px;
+    width: 240px;
+}
+
+.textpanel img {
+    width: 300px;
 }
