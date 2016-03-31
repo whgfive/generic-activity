@@ -31,6 +31,7 @@ exports.validate = function(req, res) {
 };
 
 exports.execute = function(req, res) {
+    console.log("TheRequest:"+JSON.stringify(req));
     console.log("Header:"+JSON.stringify(req.headers));
     console.log("Body:"+JSON.stringify(req.body));
     io.emit('journeyPost',{body:req.body,method:req.method,url:req.url,time:Date.now()});
