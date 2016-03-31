@@ -1,16 +1,16 @@
 {
-  "name": "Salesforce Journey Builder Generic Activity",
+  "name": "SE Custom Actvity",
   "description": "Create a generic Journey Builder Custom Activity.",
   "repository": "https://github.com/whgfive/generic-activity",
   "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
   "logo": "http://image.s4.exct.net/lib/fe9615737463047a73/m/4/21230f62-8d05-43f6-b7ca-fe66edd72c94.png",
   "env": {
-  	"jwtUse":null,
-    "jwtTokenSecret":null,
-    "jwtExternalKey":null,
-  	"appcenterKey":null,
-    "activityAppName":null,
-  	"activityName":null,
-  	"activityDescription":null
+  	"jwtUse":{},
+    "jwtTokenSecret":{},
+    "jwtExternalKey":{},
+  	"appcenterKey":{},
+    "activityAppName":{},
+  	"activityName":{},
+  	"activityDescription":{}
   }
 }
