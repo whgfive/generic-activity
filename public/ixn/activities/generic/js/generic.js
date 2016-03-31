@@ -2,59 +2,59 @@ define( function( require ) {
 
     'use strict';
     
-	var Postmonger = require( 'postmonger' );
-	var $ = require( 'vendor/jquery.min' );
+    var Postmonger = require( 'postmonger' );
+    var $ = require( 'vendor/jquery.min' );
 
     var connection = new Postmonger.Session();
     var toJbPayload = {};
     var step = 1; 
-	var tokens;
-	var endpoints;
-	
+    var tokens;
+    var endpoints;
+    
     $(window).ready(onRender);
 
     connection.on('initActivity', function(payload) {
-        var priority;
+        var message;
 
         if (payload) {
             toJbPayload = payload;
-            
-			var aArgs = toJbPayload['arguments'].execute.inArguments;
-			var oArgs = {};
-			for (var i=0; i<aArgs.length; i++) {  
-				for (var key in aArgs[i]) { 
-					oArgs[key] = aArgs[i][key]; 
-				}
-			}
-            message = oArgs.message || toJbPayload['configurationArguments'].defaults.message;
+            console.log('payload',payload);
+            var aArgs = toJbPayload['arguments'].execute.inArguments;
+            var oArgs = {};
+            for (var i=0; i<aArgs.length; i++) {  
+                for (var key in aArgs[i]) { 
+                    oArgs[key] = aArgs[i][key]; 
+                }
+            }
+            message = oArgs.message || toJbPayload['configurationArguments'].defaults.message;            
         }
         
-		$.get( "/version", function( data ) {
-			$('#version').html('Version: ' + data.version);
-		});                
-	    
+        $.get( "/version", function( data ) {
+            $('#version').html('Version: ' + data.version);
+        });                
+
         if (!message) {
             connection.trigger('updateButton', { button: 'next', enabled: false });
         }
 
-		gotoStep(step);
+        gotoStep(step);
         
     });
 
     connection.on('requestedTokens', function(data) {
-		if( data.error ) {
-			console.error( data.error );
-		} else {
-			tokens = data;
-		}        
+        if( data.error ) {
+            console.error( data.error );
+        } else {
+            tokens = data;
+        }        
     });
 
     connection.on('requestedEndpoints', function(data) {
-		if( data.error ) {
-			console.error( data.error );
-		} else {
-			endpoints = data;
-		}        
+        if( data.error ) {
+            console.error( data.error );
+        } else {
+            endpoints = data;
+        }        
     });
 
     connection.on('clickedNext', function() {
@@ -122,6 +122,6 @@ define( function( require ) {
         toJbPayload.metaData.isConfigured = true;
         connection.trigger('updateActivity', toJbPayload);
     }; 
-    	 
+         
 });
-			
+            
