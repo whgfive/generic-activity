@@ -1,6 +1,6 @@
 {
   "name": "SE Custom Actvity",
-  "description": "Create a generic Journey Builder Custom Activity for use within your demos. Simply update the environment variables below to edit what appears within Journey Builder as well as provide your appropriate keys.",
+  "description": "Create a generic Journey Builder Custom Activity for use within your demos.",
   "repository": "https://github.com/whgfive/generic-activity",
   "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
   "logo": "http://image.s4.exct.net/lib/fe9615737463047a73/m/4/21230f62-8d05-43f6-b7ca-fe66edd72c94.png",
@@ -10,7 +10,7 @@
       "required":false
       },
     "jwtTokenSecret":{
-      "description":"This would be the value of the secret value used to validate the token. This is the value before adding as a salted key within the Marketing Cloud. Example: Hello world",
+      "description":"This would be the value of the secret value used to validate the token.",
       "required":false
       },
     "jwtExternalKey":{
